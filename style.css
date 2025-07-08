@@ -1,0 +1,248 @@
+/* Fonts */
+:root {
+    --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --heading-font: "Poppins", sans-serif;
+    --nav-font: "Raleway", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+    --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+    --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
+    --heading-color: #006b5a; /* Color for headings, subheadings and title throughout the website */
+    --accent-color: #009970; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+    --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+    --nav-color: #006b5a;  /* The default color of the main navmenu links */
+    --nav-hover-color: #009970; /* Applied to main navmenu links when they are hovered over or active */
+    --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+    --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+    --nav-dropdown-color: #006b5a; /* Used for navigation links of the dropdown items in the navigation menu. */
+    --nav-dropdown-hover-color: #009970; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  }
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color:antiquewhite;
+    font-family: var(--default-font);
+}
+
+li, a, button {
+    text-decoration: none;
+    list-style: none;
+    font-family: var(--heading-font);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--default-color)
+}
+
+/*--------------------------------------------------------------
+# Topbar
+--------------------------------------------------------------*/
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--accent-color);
+    align-items: center;
+    padding: 10px 10%;
+}
+
+.topbar ul {
+    display: flex;
+    margin: 0;
+}
+
+.topbar ul li {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    margin-left: 1rem;
+}
+
+.contact-info span, .login-info span, .login-info a {
+    color: var(--contrast-color);
+    font-size: 13px;
+
+}
+
+.login-info li a::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--contrast-color);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.login-info li a:hover::after {
+    width: 100%;
+}
+
+
+@media (max-width: 768px) {
+    .contact-info{
+        display: none;
+    }
+}
+
+/*--------------------------------------------------------------
+# Navbar
+--------------------------------------------------------------*/
+.navbar {
+    background-color: var(--background-color);
+    color: var(--default-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);   
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+}
+
+.navbar img {
+    height: 50px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.navbar .nav-links ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.action_btn {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: scale 0.5 ease;
+}
+
+.navbar .toggle_btn {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.nav-item::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--heading-color);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.nav-item:hover {
+    color: #006b5a;
+}
+
+.nav-item.active {
+    border-bottom: 2px solid var(--accent-color);
+    color: #006b5a;
+}
+
+.action_btn:hover {
+     scale: 1.05;
+    
+}
+
+.action_btn:active {
+    scale: 0.95;
+}
+
+
+
+/* Dropdown Menu */
+.dropdown_menu {
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 60px;
+    height: 0;
+    width: 300px;
+    background-color: rgba(0,0,0,0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open {
+    height: 265px;
+}
+
+.dropdown_menu li {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_menu .nav-item::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--heading-color);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.dropdown_menu li a:hover::after {
+    width: 100%;
+}
+
+.dropdown_menu .action_btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown_menu {
+    display: block;
+}
+
+
+
+@media (max-width: 768px) {
+    .nav-links, .nav-container .action_btn {
+        display: none;
+    }
+    
+    .navbar .toggle_btn {
+        display: block;
+    }
+   
+}
+
+@media (max-width: 576px) {
+    .dropdown_menu {
+        left: 2rem;
+        width: unset;
+    }
+}
